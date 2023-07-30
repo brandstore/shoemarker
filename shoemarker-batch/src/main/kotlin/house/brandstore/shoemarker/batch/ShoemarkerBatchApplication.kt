@@ -7,5 +7,4 @@ class ShoemarkerBatchApplication
 
 fun main(args: Array<String>) {
     runApplication<ShoemarkerBatchApplication>(*args)
-    //test
 }
