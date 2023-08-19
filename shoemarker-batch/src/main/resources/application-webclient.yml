@@ -1,0 +1,7 @@
+---
+webclient:
+  batch:
+    masterofmalt:
+      url: masterofmalt.com
+      connectionTtimeoutMs: 4000
+      socketTimeoutMs: 1000
