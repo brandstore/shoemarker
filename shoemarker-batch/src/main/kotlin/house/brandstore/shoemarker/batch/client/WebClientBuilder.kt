@@ -1,6 +1,6 @@
 package house.brandstore.shoemarker.batch.client
 
-import house.brandstore.shoemarker.batch.config.property.HttpProperty
+import house.brandstore.shoemarker.batch.config.property.HttpProperties
 import house.brandstore.shoemarker.batch.util.CollectionsUtil
 import org.slf4j.LoggerFactory
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction
@@ -8,13 +8,13 @@ import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 
 class WebClientBuilder(
-    private val httpProperty: HttpProperty
+    private val httpProperties: HttpProperties
 ) {
 
     private val logger = LoggerFactory.getLogger(WebClientBuilder::class.java)
 
-    private val socketTimeout = httpProperty.socketTimeoutMs
-    private val connectionTimeout = httpProperty.connectionTimeoutMs
+    private val socketTimeout = httpProperties.socketTimeoutMs
+    private val connectionTimeout = httpProperties.connectionTimeoutMs
 
 //    private var httpClientBuilder: HttpClient = HttpClient.create()
     private val webClient = WebClient.builder()
@@ -56,7 +56,7 @@ class WebClientBuilder(
         if (this.enabledDevLogging)
             addDevLoggingFilter()
 
-        return webClient.baseUrl(httpProperty.url)
+        return webClient.baseUrl(httpProperties.url)
             .filters {
                 filters.forEach { filter -> it.add(filter) }
             }
